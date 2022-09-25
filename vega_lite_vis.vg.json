@@ -16,22 +16,21 @@
         "data": {
         "url": "https://raw.githubusercontent.com/BoneFiend/3179/main/LOTE%20data.csv"
         },
-      "key": "Council",
-      "fields": ["Total"]
+        "key": "Council",
+        "fields": ["Total"]
+        
       }
+      
     },
-      {"calculate": "datum.Total + 0.1", "as": "Active Cases"}
+    {"filter": "datum.Language == 'Chinese'"}
       ],
   "mark": {"type": "geoshape"},
   "encoding": {
     "color": {
-    "field": "Active Cases",
-    "type": "quantitative",
-    "scale": {"type": "log"}
-  },
-  "tooltip": [
-    {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-  {"field": "Active", "type": "quantitative"}
-  ]
+      "field": "Active Cases",
+      "type": "quantitative",
+      "scale": {"type": "log"}
+    }
   }
+  
 }
