@@ -1,36 +1,35 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
   "title": "LOTE Books by City Council",
-  "width": 800,
-  "height": 400,
-  "projection": {"type": "equalEarth"},
+  "width": 500,
+  "height": 300,
+  "projection": {"type": "equirectangular"},
+
   "data": {
-    "url": "https://raw.githubusercontent.com/BoneFiend/3179/main/LGA_POLYGON.json",
-    "format": {"type": "topojson", "feature": "LGA_POLYGON"}
-    },
+    "url": "https://raw.githubusercontent.com/BoneFiend/3179/main/LGA_POLYGON2.json",
+    "format": {"type": "topojson", "feature": "vic_lga"}
+  },
   "transform": [
     {
-      "lookup": "properties.LGA_NAME",
+      "lookup": "properties.ABB_NAME",
       "from": {
         "data": {
-        "url": "https://raw.githubusercontent.com/BoneFiend/3179/main/LOTE%20data.csv"
+          "url": "https://raw.githubusercontent.com/BoneFiend/3179/main/LOTE%20data.csv"
         },
-        "key": "Council",
-        "fields": ["Total"]
-        
+          "key": "Council",
+          "fields": ["Total"]
       }
       
     },
     {"filter": "datum.Language == 'Chinese'"}
-      ],
+  ],
+
   "mark": {"type": "geoshape"},
   "encoding": {
     "color": {
-      "field": "Active Cases",
+      "field": "Total",
       "type": "quantitative",
       "scale": {"type": "log"}
     }
   }
-  
 }
