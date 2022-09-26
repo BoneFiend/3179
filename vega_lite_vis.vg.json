@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "LOTE Books by City Council",
-  "width": 500,
-  "height": 300,
+  "title": "Chinese Books by City Council in 2021",
+  "width": 1000,
+  "height": 600,
   "projection": {"type": "equirectangular"},
 
   "data": {
@@ -14,22 +14,26 @@
       "lookup": "properties.ABB_NAME",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/BoneFiend/3179/main/LOTE%20data.csv"
+          "url": "https://raw.githubusercontent.com/BoneFiend/3179/main/chinese%20data.csv"
         },
           "key": "Council",
           "fields": ["Total"]
-      }
+      },
+      "as": "Chinese Books"
       
-    },
-    {"filter": "datum.Language == 'Chinese'"}
+    }
   ],
 
-  "mark": {"type": "geoshape"},
+  "mark": {"type": "geoshape", "stroke": "black"},
   "encoding": {
     "color": {
-      "field": "Total",
+      "field": "Chinese Books",
       "type": "quantitative",
       "scale": {"type": "log"}
-    }
+    },
+    "tooltip": [
+      {"field": "properties.ABB_NAME", "type": "nominal", "title": "Local Council"},
+      {"field": "Chinese Books", "type": "quantitative"}
+    ]
   }
 }
