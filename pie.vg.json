@@ -1,0 +1,14 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 600,
+    "title": "Total LOTE Books in Victoria",
+    "data": {"url": "https://raw.githubusercontent.com/BoneFiend/3179/main/Language%20Data.csv"},
+    "mark": "arc",
+    "encoding": {
+      "theta": {"field": "Total", "type": "quantitative"},
+      "color": {"field": "Language", "type": "nominal"},
+      "order": {"field": "value", "type": "quantitative", "sort": "descending"}
+    }
+  }
+  

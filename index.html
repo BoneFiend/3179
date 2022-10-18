@@ -13,13 +13,28 @@
     <title>LOTE Books in Victorian Libraries</title>
 </head>
 <body>
+    <h1>LOTE Books in Victorian Libraries</h1>
+    
+    
+    <div id="pie_chart"></div>
+    <p>Chinese language books are the most stocked LOTE book langauge in Victoria.</p>
+    <div id="bar_chart"></div>
+    <p></p>
     <div id="chinese_map"></div>
 
     <script type="text/javascript">
 
-        var spec2 = "map.vg.json";
-        vegaEmbed('#chinese_map', spec2).then(function(result) {
+        var spec1 = "map.vg.json";
+        vegaEmbed('#chinese_map', spec1).then(function(result) {
+        }).catch(console.error);
+
+        var spec2 = "pie.vg.json";
+        vegaEmbed('#pie_chart', spec2).then(function(result) {
+        }).catch(console.error);
+
+        var spec3 = "bar.vg.json";
+        vegaEmbed('#bar_chart', spec3).then(function(result) {
         }).catch(console.error);
     </script>
 </body>
-</html>
+<

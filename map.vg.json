@@ -52,8 +52,8 @@
           "scale": {"type": "log"}
         },
         "tooltip": [
-          {"field": "properties.ABB_NAME", "type": "nominal", "title": "Local Council"},
-          {"field": "Chinese Books", "type": "quantitative"}
+          {"field": "Council", "type": "nominal", "title": "Local Council"},
+          {"field": "Total", "type": "quantitative", "title": "Chinese Books"}
         ]
       }
     }

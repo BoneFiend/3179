@@ -1,0 +1,27 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Popular Languages by City Council",
+    "data": {"url": "https://raw.githubusercontent.com/BoneFiend/3179/main/LOTE%20data.csv"},
+  
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "Council",
+        "type": "ordinal",
+        "title": "City Council"
+      },
+      "y": {
+        "field": "Total",
+        "type": "quantitative"
+      },
+      "color": {
+        "field": "Language",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Chinese", "Italian", "Vietnamese", "Greek", "Spanish"]
+        }
+        
+      }
+    }
+  }
+  
