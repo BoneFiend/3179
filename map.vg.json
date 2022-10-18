@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Chinese Books by City Council in 2021",
+  "width": 1000,
+  "height": 600,
+  "projection": {"type": "equirectangular"},
+
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/BoneFiend/3179/main/LGA_POLYGON2.json",
+        "format": {"type": "topojson", "feature": "vic_lga"}
+      },
+      "transform": [
+        {
+          "calculate": "'Data is not available in ' + datum.properties.ABB_NAME",
+          "as": "note"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ddd",
+        "stroke": "black",
+        "strokeWidth": 1
+      },
+      "encoding": {"tooltip": {"field": "note"}}
+    },
+    {
+      "data": {
+          "url": "https://raw.githubusercontent.com/BoneFiend/3179/main/LOTE%20data.csv"
+      },
+      "transform": [
+        {
+          "lookup": "Council",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/BoneFiend/3179/main/LGA_POLYGON2.json",
+              "format": {"type": "topojson", "feature": "vic_lga"}
+            },
+            "key": "properties.ABB_NAME"
+          },
+          "as": "geo"
+        },
+        {"filter": "datum.Language == 'Chinese'"}
+      ],
+      "mark": {"type": "geoshape", "stroke": "black"},
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "Total",
+          "type": "quantitative",
+          "scale": {"type": "log"}
+        },
+        "tooltip": [
+          {"field": "properties.ABB_NAME", "type": "nominal", "title": "Local Council"},
+          {"field": "Chinese Books", "type": "quantitative"}
+        ]
+      }
+    }
+
+  ]
+}
